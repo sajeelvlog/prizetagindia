@@ -26,7 +26,7 @@ body {
 
 /* Header */
 header {
-  background-color: #1f2937;
+  background-color: #ffffff;
   color: white;
   padding: 1rem 0;
   position: sticky;
@@ -38,6 +38,7 @@ header {
 .logo {
   font-size: 1.5rem;
   font-weight: 600;
+  color: #0d0d0d;
 }
 
 .navbar {
@@ -45,6 +46,17 @@ header {
   justify-content: flex-end;
   gap: 1.5rem;
   align-items: center;
+}
+
+.navbar a {
+  color: #0d0d0d;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #e6005c;
 }
 
 header .container {
@@ -55,7 +67,7 @@ header .container {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(to right, #4f46e5, #3b82f6);
+  background: linear-gradient(to right, #ff1a75, #e6005c);
   color: white;
   text-align: center;
   padding: 6rem 2rem;
@@ -75,7 +87,7 @@ header .container {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: white;
-  color: #3b82f6;
+  color: black;
   border-radius: 25px;
   font-weight: 600;
   text-decoration: none;
@@ -89,10 +101,12 @@ header .container {
 /* Sections */
 .section {
   padding: 4rem 0;
+  color: #0d0d0d;
 }
 
 .section.alt {
-  background-color: #e5e7eb;
+  background-color: #ff1a75;
+  color: white;
 }
 
 h2 {
@@ -117,13 +131,14 @@ h2 {
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform 0.3s ease;
+  color: #ff1a75;
 }
 
 .product-card:hover {
   transform: translateY(-10px);
 }
 
-/* Contact Form */
+/* Contact Form (Order Now Section - DO NOT CHANGE) */
 form {
   background: white;
   padding: 2rem;
@@ -193,4 +208,36 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #2563eb;
+}
+
+.phone-field {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.phone-field .country-code {
+  padding: 0.75rem;
+  background-color: #e5e7eb;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.phone-field input[type="tel"] {
+  flex: 1;
+}
+
+.checkbox-same {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1rem;
 }

@@ -15,14 +15,15 @@
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
+        <a href="#order">Order</a>
+	<a href="#contact">Contact Us</a>
       </nav>
     </div>
   </header>
 
   <section id="home" class="hero">
     <div class="hero-content">
-      <h1>Creative Labeling Starts Here</h1>
+      <h1>Welcome to Your World</h1>
       <p>Modern. Smart. Eco-Friendly.</p>
       <a href="#products" class="btn">Explore Products</a>
     </div>
@@ -46,15 +47,50 @@
     </div>
   </section>
 
-  <section id="contact" class="section">
+  <section id="order" class="section">
     <div class="container">
-      <h2>Contact Us</h2>
+      <h2>Order Now</h2>
       <form id="orderForm" action="https://getform.io/f/amdmjoqb" method="POST">
         <h3>🛍️ Place Your Order</h3>
 
         <input type="text" name="name" placeholder="Your Full Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
-        <input type="tel" name="phone" placeholder="Phone Number" required />
+
+        <!-- Mobile Number -->
+        <div class="phone-field">
+          <span class="country-code">+91</span>
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            placeholder="10-digit Mobile Number"
+            pattern="[0-9]{10}"
+            maxlength="10"
+            inputmode="numeric"
+            required
+          />
+        </div>
+
+        <!-- Same as mobile checkbox -->
+        <div class="checkbox-same">
+          <input type="checkbox" id="sameAsPhone" />
+          <label for="sameAsPhone">WhatsApp number is same as mobile number</label>
+        </div>
+
+        <!-- WhatsApp Number -->
+        <div class="phone-field">
+          <span class="country-code">+91</span>
+          <input
+            type="tel"
+            name="whatsapp"
+            id="whatsapp"
+            placeholder="WhatsApp Number"
+            pattern="[0-9]{10}"
+            maxlength="10"
+            inputmode="numeric"
+            required
+          />
+        </div>
 
         <label for="product">Choose Product:</label>
         <select name="product" id="product" required>
@@ -67,19 +103,29 @@
         <input type="number" name="quantity" placeholder="Quantity" min="1" required />
         <textarea name="address" placeholder="Shipping Address" required></textarea>
 
-        <label>
-          <input type="checkbox" name="cod" value="Yes" />
-          Cash on Delivery
-        </label>
+      <!-- Payment Method -->
+<label for="payment">Payment Method:</label>
+<div id="payment-methods">
+  <label><input type="radio" name="payment" value="Cash on Delivery" required /> Cash on Delivery</label><br/>
+  <label><input type="radio" name="payment" value="UPI" /> UPI</label><br/>
+  <label><input type="radio" name="payment" value="GPay/PhonePe" /> GPay / PhonePe</label>
+</div>
+
 
         <button type="submit">Place Order</button>
       </form>
     </div>
   </section>
+ <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact Us</h2>
+	<h3> +91 9496655950 </h3>	
+    </div>
+  </section>
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 Prize Tag India. Crafted with care.</p>
+      <p>&copy; 2025 Prize Tag India. copyright Sajeel Poovancheri</p>
     </div>
   </footer>
 
@@ -95,12 +141,47 @@
       });
     });
 
-    // Handle order form submission
+    // Order form logic
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('orderForm');
+      const mobileInput = document.getElementById('phone');
+      const whatsappInput = document.getElementById('whatsapp');
+      const sameWhatsappCheckbox = document.getElementById('sameAsPhone');
+
+      sameWhatsappCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+          whatsappInput.value = mobileInput.value;
+          whatsappInput.setAttribute('readonly', 'readonly');
+        } else {
+          whatsappInput.removeAttribute('readonly');
+          whatsappInput.value = '';
+        }
+      });
+
+      mobileInput.addEventListener('input', function () {
+        if (sameWhatsappCheckbox.checked) {
+          whatsappInput.value = mobileInput.value;
+        }
+      });
 
       form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Prevent redirect
+        e.preventDefault();
+
+        const mobile = mobileInput.value.trim();
+        const whatsapp = whatsappInput.value.trim();
+        const mobileRegex = /^[0-9]{10}$/;
+
+        if (!mobileRegex.test(mobile)) {
+          alert("📱 Mobile number must be exactly 10 digits.");
+          return;
+        }
+
+        if (!sameWhatsappCheckbox.checked && !mobileRegex.test(whatsapp)) {
+          alert("📲 WhatsApp number must also be 10 digits.");
+          return;
+        }
+
+        whatsappInput.removeAttribute('readonly');
 
         const formData = new FormData(form);
 
@@ -115,9 +196,12 @@
           if (response.ok) {
             alert("🎉 Order placed! We'll contact you soon.");
             form.reset();
+            whatsappInput.removeAttribute('readonly');
           } else {
             response.json().then(data => {
               alert(data.error || "❌ There was a problem with your order.");
+            }).catch(() => {
+              alert("❌ Submission failed. Please try again.");
             });
           }
         })
