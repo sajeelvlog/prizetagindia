@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prize Tag India</title>
+  <title>Prize tag India</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <div class="container">
-      <div class="logo">🎯 Prize Tag India</div>
+      <div class="logo">🎯Prize Tag India</div>
       <nav class="navbar">
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -50,70 +50,52 @@
   <section id="order" class="section">
     <div class="container">
       <h2>Order Now</h2>
-      <form id="orderForm" action="https://getform.io/f/amdmjoqb" method="POST">
-        <h3>🛍️ Place Your Order</h3>
+     <form id="orderForm" action="https://script.google.com/macros/s/AKfycbwmsxsRWERW3R_Pjlbik1_xVlhea7guXLDxqhp-gvXpkp9ZrE4iU2_uPfmEyaVOhJvI/exec" method="POST">
+  <h3>🛍️ Place Your Order</h3>
 
-        <input type="text" name="name" placeholder="Your Full Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
+  <input type="text" name="name" placeholder="Your Full Name" required />
+  <input type="email" name="email" placeholder="Your Email" required />
 
-        <!-- Mobile Number -->
-        <div class="phone-field">
-          <span class="country-code">+91</span>
-          <input
-            type="tel"
-            name="phone"
-            id="phone"
-            placeholder="10-digit Mobile Number"
-            pattern="[0-9]{10}"
-            maxlength="10"
-            inputmode="numeric"
-            required
-          />
-        </div>
+  <!-- Mobile Number -->
+  <div class="phone-field">
+    <span class="country-code">+91</span>
+    <input type="tel" name="phone" id="phone" placeholder="10-digit Mobile Number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" required />
+  </div>
 
-        <!-- Same as mobile checkbox -->
-        <div class="checkbox-same">
-          <input type="checkbox" id="sameAsPhone" />
-          <label for="sameAsPhone">WhatsApp number is same as mobile number</label>
-        </div>
+  <!-- Same as mobile checkbox -->
+  <div class="checkbox-same">
+    <input type="checkbox" id="sameAsPhone" />
+    <label for="sameAsPhone">WhatsApp number is same as mobile number</label>
+  </div>
 
-        <!-- WhatsApp Number -->
-        <div class="phone-field">
-          <span class="country-code">+91</span>
-          <input
-            type="tel"
-            name="whatsapp"
-            id="whatsapp"
-            placeholder="WhatsApp Number"
-            pattern="[0-9]{10}"
-            maxlength="10"
-            inputmode="numeric"
-            required
-          />
-        </div>
+  <!-- WhatsApp Number -->
+  <div class="phone-field">
+    <span class="country-code">+91</span>
+    <input type="tel" name="whatsapp" id="whatsapp" placeholder="WhatsApp Number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" required />
+  </div>
 
-        <label for="product">Choose Product:</label>
-        <select name="product" id="product" required>
-          <option value="">-- Select Product --</option>
-          <option value="Smart Price Tag">Smart Price Tag</option>
-          <option value="Eco-friendly Labels">Eco-friendly Labels</option>
-          <option value="Custom Branding Tag">Custom Branding Tag</option>
-        </select>
+  <label for="product">Choose Product:</label>
+  <select name="product" id="product" required>
+    <option value="">-- Select Product --</option>
+    <option value="Smart Price Tag">Smart Price Tag</option>
+    <option value="Eco-friendly Labels">Eco-friendly Labels</option>
+    <option value="Custom Branding Tag">Custom Branding Tag</option>
+  </select>
 
-        <input type="number" name="quantity" placeholder="Quantity" min="1" required />
-        <textarea name="address" placeholder="Shipping Address" required></textarea>
+  <input type="number" name="quantity" placeholder="Quantity" min="1" required />
+  <textarea name="address" placeholder="Shipping Address" required></textarea>
 
-      <!-- Payment Method -->
-<label for="payment">Payment Method:</label>
-<div id="payment-methods">
-  <label><input type="radio" name="payment" value="Cash on Delivery" required /> Cash on Delivery</label><br/>
-  <label><input type="radio" name="payment" value="UPI" /> UPI</label><br/>
-  <label><input type="radio" name="payment" value="GPay/PhonePe" /> GPay / PhonePe</label>
-</div>
+  <!-- Payment Method -->
+  <label for="payment">Payment Method:</label>
+  <div id="payment-methods">
+    <label><input type="radio" name="payment" value="Cash on Delivery" required /> Cash on Delivery</label><br/>
+    <label><input type="radio" name="payment" value="UPI" /> UPI</label><br/>
+    <label><input type="radio" name="payment" value="GPay/PhonePe" /> GPay / PhonePe</label>
+  </div>
 
+  <button type="submit">Place Order</button>
+</form>
 
-        <button type="submit">Place Order</button>
-      </form>
     </div>
   </section>
  <section id="contact" class="section">
